@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { signUp, signIn } from "../controllers/userController";
 import { authMiddleware } from "../middlewares/authMiddlewares";
 import { ProtectedRequest } from "../middlewares/authMiddlewares";
-import addPost from "../controllers/postcontroller";
+import { addPost, updatePost } from "../controllers/postcontroller";
 
 const router = express.Router();
 
@@ -15,6 +15,7 @@ router.get(
     res.json({ message: "You have access, wellcome!", userId: req.user });
   }
 );
-router.post("/posts", authMiddleware, addPost);
+router.post("/posts/create", authMiddleware, addPost);
+router.patch("/posts/update/:id", authMiddleware, updatePost);
 
 export default router;
