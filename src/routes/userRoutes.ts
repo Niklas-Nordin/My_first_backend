@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { signUp, signIn } from "../controllers/userController";
 import { authMiddleware } from "../middlewares/authMiddlewares";
 import { ProtectedRequest } from "../middlewares/authMiddlewares";
-import { addPost, updatePost } from "../controllers/postcontroller";
+import { addPost, deletePost, updatePost } from "../controllers/postcontroller";
 
 const router = express.Router();
 
@@ -17,5 +17,6 @@ router.get(
 );
 router.post("/posts/create", authMiddleware, addPost);
 router.patch("/posts/update/:id", authMiddleware, updatePost);
+router.delete("/posts/delete/:id", authMiddleware, deletePost);
 
 export default router;

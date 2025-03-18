@@ -33,7 +33,7 @@ export const updatePost = async (req: ProtectedRequest, res: Response) => {
 
     if (!existingPost) {
       res.status(404).json({
-        message: "Couldn't fin a post with the same ID",
+        message: "Couldn't find a post with the same ID",
       });
     }
 
@@ -54,5 +54,44 @@ export const updatePost = async (req: ProtectedRequest, res: Response) => {
     res.status(200).json(update);
   } catch (error) {
     res.status(500).json({ message: "couldn't update the post right now!" });
+  }
+};
+
+export const deletePost = async (req: ProtectedRequest, res: Response) => {
+  try {
+    console.log("Request.params", req.params);
+    console.log("User ID", req.user?.id);
+    const { id } = req.params;
+    const userId = req.user?.id;
+
+    const existingPostToDelete = await prisma.post.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+    console.log("hej", existingPostToDelete);
+
+    if (!existingPostToDelete) {
+      res.status(404).json({ message: "Couldn't find post!" });
+      return;
+    }
+
+    if (existingPostToDelete.userId !== userId) {
+      res
+        .status(403)
+        .json({ message: "You don't have permission to delete this post!" });
+      return;
+    }
+
+    const deletePost = await prisma.post.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+    console.log(deletePost);
+
+    res.status(200).json({ message: "Post deleted!" });
+  } catch (error) {
+    res.status(500).json({ message: "Couldn't delete the post right now" });
   }
 };
