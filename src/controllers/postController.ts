@@ -4,6 +4,14 @@ import { ProtectedRequest } from "../middlewares/authMiddlewares";
 
 const prisma = new PrismaClient();
 
+export const getPost = async (req: ProtectedRequest, res: Response) => {
+  const getAllPosts = await prisma.post.findMany();
+  res.json({
+    message: "You have access, wellcome!",
+    posts: getAllPosts,
+  });
+};
+
 export const addPost = async (req: ProtectedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
