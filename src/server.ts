@@ -1,10 +1,16 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
 import userRoutes from "./routes/userRoutes";
 import postRoutes from "./routes/postRoutes";
 
 const app = express();
 const port = 3000;
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use(express.json());
@@ -13,7 +19,7 @@ app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 app.get("/", (req, res) => {
-  res.send("<h1>Wellcome to my first backend application</h1>");
+  res.render("index.ejs");
 });
 
 app.listen("3000", () => {

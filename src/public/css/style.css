@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form {
+  width: 40%;
+  margin: 5rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.submit {
+  width: 6rem;
+  padding: 0.5rem 1rem;
+  margin-left: auto;
+}

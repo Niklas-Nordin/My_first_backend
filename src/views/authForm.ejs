@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My First Backend</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <form class="form" action="<%= action %>" method="POST">
+      <% if(action === "/users/signUp") { %>
+      <label for="email">Email:</label>
+      <input
+        class="input"
+        type="text"
+        name="email"
+        value="<%= inputValues?.email || '' %>"
+        required
+      />
+      <% } %> <% if(errors.email) { %>
+      <p><%= errors.email %></p>
+      <% } %>
+
+      <label for="username">Username:</label>
+      <input
+        class="input"
+        type="text"
+        name="username"
+        value="<%= inputValues?.username || '' %>"
+        required
+      />
+      <% if(errors.username) { %>
+      <p><%= errors.username %></p>
+      <% } %>
+
+      <label for="password">Password:</label>
+      <input class="input" type="text" name="password" required />
+
+      <% if(action === "/users/signUp") { %>
+      <label for="confirm-password">Confirm Password:</label>
+      <input class="input" type="text" name="confirm-password" required />
+      <% if(errors.password) { %>
+      <p><%= errors.password %></p>
+      <% }} %>
+
+      <button class="submit" type="submit"><%= btnText %></button>
+    </form>
+  </body>
+</html>
