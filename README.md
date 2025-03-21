@@ -2,7 +2,7 @@
 
 Detta är ett pågående projekt. Backend biten är klar, för tillfället iaf. Just nu behöver frontend biten fixas till, då den inte är het klar ännu.
 
-Det här är mitt första egna backend projekt. Funktioner till detta projekt är att man ska kunna skapa en användare, m.h.a email, användarnamn och lösenord. Efter att användare är skapad, då kan man logga in på sitt konto för att kunna se alla posts som gjorts. För i sin tur också kunna skapa, redigera och ta bort oönskade posts.
+Det här är mitt första egna backend projekt. Funktioner till detta projekt är att man ska kunna skapa en användare, m.h.a email, användarnamn och lösenord. Efter att en användare är skapad, då kan man logga in på sitt konto för att kunna se alla posts som gjorts. För i sin tur också kunna skapa, redigera och ta bort oönskade posts.
 Just nu behöver man logga in, efter man skapat ett konto. En av de nästkommande funktionerna som ska läggas till är att man inte ska behöva logga in, efter skapat konto. Med det som sagt, man loggas in direkt.
 
 När man loggar in, då skickas en token till en (JWT) som visar att man är en verifierad användare, istället för att logga in på nytt hela tiden vid framtida förfrågningar. Denna token lagras i en cookie.
