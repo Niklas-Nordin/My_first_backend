@@ -1,6 +1,4 @@
-# Mitt första backend projekt
-
-## Om projektet
+# Om projektet
 
 Detta är ett pågående projekt. Backend biten är klar, för tillfället iaf. Just nu behöver frontend biten fixas till, då den inte är het klar ännu.
 
@@ -22,7 +20,7 @@ De tekniker och verktyg som användts under detta projekt är:
 - Prisma
   Som är ett ORM (Object-Relational Mapping) verktyg som används för att hantera och integrera med databaser på ett lättanvänt sätt.
 
-I prisma.schema filen defineras de olika tabellerna som används och vad de innehåller, samt visar om de har relation med varandra osv. Prisma översätter sedan dessa modeller sedan till tabeller.
+  I prisma.schema filen defineras de olika tabellerna som används och vad de innehåller, samt visar om de har relation med varandra osv. Prisma översätter sedan dessa modeller sedan till tabeller.
 
 - MySQL
   Är en relationsdatabashanteringssystem som används för att lagra, organisera och hantera data i tabeller.
