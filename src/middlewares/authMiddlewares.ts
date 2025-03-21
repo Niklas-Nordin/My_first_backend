@@ -10,7 +10,7 @@ export const authMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.header("Authorization")?.split(" ")[1];
+  const token = req.cookies.token;
 
   if (!token) {
     res.status(401).json({ message: "Access denied!" });
@@ -23,7 +23,7 @@ export const authMiddleware = (
       process.env.JWT_SECRET as string
     ) as JwtPayload;
     req.user = { id: decoded.id };
-    console.log("req.user: ", req.user);
+    console.log("req.user: ", req.user, token);
     next();
   } catch (error) {
     res.status(401).json({ message: "invalid token!" });

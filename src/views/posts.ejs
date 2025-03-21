@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My First Backend</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <ul>
+        <% { posts.forEach(post => { %>
+        <li class="li-item">
+          <h2 class="title"><%= post.title %></h2>
+          <p class="content"><%= post.content %></p>
+          <input type="submit" value="PUT" formaction="/posts/update" />
+          <input type="submit" value="Delete" formaction="/posts/delete" />
+        </li>
+        <% });} %>
+      </ul>
+
+      <button onclick="window.location.href='/posts/create'">
+        Create Post
+      </button>
+      <button onclick="window.location.href='/posts/update'">
+        Update Post
+      </button>
+    </main>
+  </body>
+</html>

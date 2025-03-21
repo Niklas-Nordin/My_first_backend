@@ -5,11 +5,16 @@ import { ProtectedRequest } from "../middlewares/authMiddlewares";
 const prisma = new PrismaClient();
 
 export const getPost = async (req: ProtectedRequest, res: Response) => {
-  const getAllPosts = await prisma.post.findMany();
-  res.json({
-    message: "You have access, wellcome!",
-    posts: getAllPosts,
-  });
+  try {
+    const getAllPosts = await prisma.post.findMany();
+    console.log("Posts: ", getAllPosts);
+    res.status(201).render("posts", {
+      message: "You have access, wellcome!",
+      posts: getAllPosts,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Couldn't get posts!" });
+  }
 };
 
 export const addPost = async (req: ProtectedRequest, res: Response) => {

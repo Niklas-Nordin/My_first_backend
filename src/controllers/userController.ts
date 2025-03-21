@@ -18,7 +18,12 @@ export const getSignUp = async (req: Request, res: Response) => {
 };
 
 export const getSignIn = async (req: Request, res: Response) => {
-  res.render("authForm", { action: "/users/signIn", btnText: "Sign In" });
+  res.render("authForm", {
+    action: "/users/signIn",
+    btnText: "Sign In",
+    errors: {},
+    inputValues: {},
+  });
 };
 
 export const signUp = async (req: Request, res: Response) => {
@@ -29,7 +34,6 @@ export const signUp = async (req: Request, res: Response) => {
       password,
       "confirm-password": confirmPassword,
     } = req.body;
-    console.log(req.body);
 
     let errors: any = {};
 
@@ -65,7 +69,7 @@ export const signUp = async (req: Request, res: Response) => {
         password: hashedPassword,
       },
     });
-    console.log(createUser);
+    console.log("User Created: ", createUser);
     res.status(201).redirect("/");
   } catch (error) {
     res.status(500).json({ message: "Couldn't create that user..." });
@@ -96,7 +100,15 @@ export const signIn = async (req: Request, res: Response) => {
       expiresIn: "1h",
     });
 
-    res.json({ message: "Sign in success!", token });
+    res.cookie("token", token, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 3600000,
+    });
+
+    console.log({ StatusCode: "201, sign in succeeded", token: token });
+
+    res.status(201).redirect("/posts");
   } catch (error) {
     res.status(500).json({ message: "Something weent wrong" });
   }
