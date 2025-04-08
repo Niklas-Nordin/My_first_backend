@@ -13,6 +13,7 @@
         <li class="li-item">
           <h2 class="title"><%= post.title %></h2>
           <p class="content"><%= post.content %></p>
+          <p class="time"><%= post.postTime %></p>
           <div>
             <form action="/posts/update/<%= post.id %>" method="GET">
               <button type="submit">Update</button>

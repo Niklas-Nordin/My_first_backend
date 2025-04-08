@@ -34,11 +34,11 @@
       <% } %>
 
       <label for="password">Password:</label>
-      <input class="input" type="text" name="password" required />
+      <input class="input" type="password" name="password" required />
 
       <% if(action === "/users/signUp") { %>
       <label for="confirm-password">Confirm Password:</label>
-      <input class="input" type="text" name="confirm-password" required />
+      <input class="input" type="password" name="confirm-password" required />
       <% if(errors.password) { %>
       <p><%= errors.password %></p>
       <% }} %>

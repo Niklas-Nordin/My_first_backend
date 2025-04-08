@@ -1,6 +1,8 @@
 import { Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { ProtectedRequest } from "../middlewares/authMiddlewares";
+import { formatDistanceToNow } from "date-fns";
+import { enUS, sv } from "date-fns/locale";
 
 const prisma = new PrismaClient();
 
@@ -8,9 +10,20 @@ export const getPost = async (req: ProtectedRequest, res: Response) => {
   try {
     const getAllPosts = await prisma.post.findMany();
     console.log("Posts: ", getAllPosts);
+
+    const timeTakerPosts = getAllPosts.map((post) => {
+      return {
+        ...post,
+        postTime: formatDistanceToNow(post.time, {
+          addSuffix: true,
+          locale: enUS,
+        }).replace("about ", ""),
+      };
+    });
+
     res.status(201).render("posts", {
       message: "You have access, wellcome!",
-      posts: getAllPosts,
+      posts: timeTakerPosts,
     });
   } catch (error) {
     res.status(500).json({ message: "Couldn't get posts!" });
@@ -53,15 +66,18 @@ export const getPostsForm = async (req: ProtectedRequest, res: Response) => {
 
 export const addPost = async (req: ProtectedRequest, res: Response) => {
   try {
+    const time = new Date();
     const userId = req.user?.id;
     const { title, content } = req.body;
     const newPost = await prisma.post.create({
       data: {
         title: title,
         content: content,
+        time: time,
         userId: userId,
       },
     });
+
     console.log(newPost);
     res.status(201).redirect("/posts");
   } catch (error) {
