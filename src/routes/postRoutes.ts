@@ -5,13 +5,17 @@ import {
   deletePost,
   updatePost,
   getPost,
+  getPostsForm,
 } from "../controllers/postController";
 
 const router = express.Router();
 
 router.get("/", authMiddleware, getPost);
+router.get("/update/:id", authMiddleware, getPostsForm);
+router.get("/create", authMiddleware, getPostsForm);
+
 router.post("/create", authMiddleware, addPost);
-router.put("/update/:id", authMiddleware, updatePost);
+router.post("/update/:id", authMiddleware, updatePost);
 router.delete("/delete/:id", authMiddleware, deletePost);
 
 export default router;

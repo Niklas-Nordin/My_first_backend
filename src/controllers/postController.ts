@@ -17,6 +17,40 @@ export const getPost = async (req: ProtectedRequest, res: Response) => {
   }
 };
 
+export const getPostsForm = async (req: ProtectedRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    let action = "/posts/create";
+    let btnText = "Create";
+    let inputValues = { title: "", content: "" };
+
+    if (id) {
+      const post = await prisma.post.findUnique({
+        where: { id: Number(id) },
+      });
+      console.log(id);
+
+      if (post) {
+        action = `/posts/update/${id}`;
+        btnText = "Save";
+        inputValues = {
+          title: post.title,
+          content: post.content,
+        };
+      }
+    }
+    res.render("postsForm", {
+      action,
+      btnText,
+      errors: {},
+      inputValues,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong!" });
+  }
+};
+
 export const addPost = async (req: ProtectedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
@@ -28,7 +62,8 @@ export const addPost = async (req: ProtectedRequest, res: Response) => {
         userId: userId,
       },
     });
-    res.status(201).json({ Message: "Post created!", newPost });
+    console.log(newPost);
+    res.status(201).redirect("/posts");
   } catch (error) {
     res.status(500).json({ message: "Failed to submit post!" });
   }
@@ -64,7 +99,8 @@ export const updatePost = async (req: ProtectedRequest, res: Response) => {
         ...(content && { content }),
       },
     });
-    res.status(200).json(update);
+    console.log(update);
+    res.status(200).redirect("/posts");
   } catch (error) {
     res.status(500).json({ message: "couldn't update the post right now!" });
   }
@@ -103,7 +139,7 @@ export const deletePost = async (req: ProtectedRequest, res: Response) => {
     });
     console.log(deletePost);
 
-    res.status(200).json({ message: "Post deleted!" });
+    res.status(200).redirect("/posts");
   } catch (error) {
     res.status(500).json({ message: "Couldn't delete the post right now" });
   }

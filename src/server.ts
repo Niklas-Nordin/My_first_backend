@@ -4,6 +4,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/userRoutes";
 import postRoutes from "./routes/postRoutes";
+import methodOverride from "method-override";
 
 const app = express();
 const port = 3000;
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
