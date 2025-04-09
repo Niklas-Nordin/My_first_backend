@@ -5,17 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First Backend</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Damion&family=Monsieur+La+Doulaise&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1 class="homepage-title">My first backend</h1>
+    <header class="header">
+      <div class="circle">
+        <h1 class="homepage-title">
+          MY FIRST <br />
+          BACKEND
+        </h1>
+      </div>
+      <div class="buttons-header">
+        <button
+          class="btn-header"
+          onclick="window.location.href='/users/signUp'"
+        >
+          Sign Up
+        </button>
+        <button
+          class="btn-header"
+          onclick="window.location.href='/users/signIn'"
+        >
+          Sign In
+        </button>
+      </div>
+    </header>
 
-    <div class="buttons">
-      <button class="btn" onclick="window.location.href='/users/signUp'">
-        Sign Up
-      </button>
-      <button class="btn" onclick="window.location.href='/users/signIn'">
-        Sign In
-      </button>
-    </div>
+    <main class="content">
+      <h2 class="homepage-text">
+        Sign in and let other know<br />
+        what you are up to
+      </h2>
+
+      <div class="buttons">
+        <button class="btn" onclick="window.location.href='/users/signUp'">
+          Sign Up
+        </button>
+        <button class="btn" onclick="window.location.href='/users/signIn'">
+          Sign In
+        </button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-text">
+        Copyright © <%= new Date().getFullYear() %> Niklas Nordin
+      </p>
+    </footer>
   </body>
 </html>

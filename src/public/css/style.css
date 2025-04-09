@@ -23,18 +23,110 @@
   margin-left: auto;
 }
 
+body {
+  height: 100vh;
+  background-color: rgb(241, 246, 249);
+}
+
+.header {
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(33, 42, 62);
+  position: relative; /* Viktigt för att kunna positionera .circle inuti */
+  height: 10%; /* Fast höjd så den inte påverkas */
+  overflow: hidden;
+}
+
+.circle {
+  width: 14rem;
+  height: 16rem;
+  background-color: rgb(155, 164, 181);
+  border-radius: 50%;
+  border: 10px solid rgb(241, 246, 249);
+  position: relative;
+  left: -100px;
+  bottom: 60px;
+}
+
+.btn-header {
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: 700;
+  background-color: white;
+  color: rgb(57, 72, 103);
+}
+
+.btn-header:hover {
+  color: rgb(155, 164, 181);
+  cursor: pointer;
+}
+
+.content {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
 .homepage-title {
-  margin: 5rem 0;
+  text-align: start;
+  color: rgb(57, 72, 103);
+  font-size: 10pt;
+  font-weight: 700;
+  position: relative;
+  bottom: -162px;
+  left: 75px;
+  font-family: "Shrikhand", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.homepage-text {
   text-align: center;
+  color: rgb(57, 72, 103);
+  font-family: "Shrikhand", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22pt;
+  line-height: 2;
 }
 
 .buttons {
-  width: 50%;
-  margin: auto;
+  width: 70%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .btn {
   padding: 0.7rem 2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: 700;
+  background-color: white;
+  color: rgb(57, 72, 103);
+}
+
+.btn:hover {
+  color: rgb(155, 164, 181);
+  cursor: pointer;
+}
+
+.footer {
+  height: 10%;
+  background-color: rgb(33, 42, 62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text {
+  color: rgb(155, 164, 181);
 }
