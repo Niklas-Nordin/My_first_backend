@@ -122,9 +122,27 @@ body {
   position: fixed;
   width: 60rem;
   height: 1rem;
-  background-color: rgba(255, 123, 0, 0.349);
-  transform: rotate(-45deg);
   z-index: -1;
+
+  background: linear-gradient(
+    45deg,
+    rgba(155, 164, 181, 0) 20%,
+    rgb(255, 255, 255) 50%,
+    rgba(155, 164, 181, 0) 70%
+  );
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  animation: moveGradient 3.5s linear infinite alternate;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 .line:nth-child(1) {
@@ -167,6 +185,10 @@ body {
 
 .btn-auth {
   margin-top: 2rem;
+}
+
+.error-msg {
+  color: red;
 }
 
 /* posts.ejs */

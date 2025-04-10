@@ -34,7 +34,7 @@
           required
         />
         <% } %> <% if(errors.email) { %>
-        <p><%= errors.email %></p>
+        <p class="error-msg"><%= errors.email %></p>
         <% } %>
 
         <label for="username">Username:</label>
@@ -46,7 +46,7 @@
           required
         />
         <% if(errors.username) { %>
-        <p><%= errors.username %></p>
+        <p class="error-msg"><%= errors.username %></p>
         <% } %>
 
         <label for="password">Password:</label>
@@ -56,7 +56,7 @@
         <label for="confirm-password">Confirm Password:</label>
         <input class="input" type="password" name="confirm-password" required />
         <% if(errors.password) { %>
-        <p><%= errors.password %></p>
+        <p class="error-msg"><%= errors.password %></p>
         <% }} %>
 
         <button class="btn btn-auth" type="submit"><%= btnText %></button>
