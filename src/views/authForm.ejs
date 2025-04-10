@@ -5,45 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First Backend</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Damion&family=Monsieur+La+Doulaise&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <form class="form" action="<%= action %>" method="POST">
-      <% if(action === "/users/signUp") { %>
-      <label for="email">Email:</label>
-      <input
-        class="input"
-        type="text"
-        name="email"
-        value="<%= inputValues?.email || '' %>"
-        required
-      />
-      <% } %> <% if(errors.email) { %>
-      <p><%= errors.email %></p>
-      <% } %>
+    <header class="header">
+      <div class="circle">
+        <h1 class="homepage-title">
+          MY FIRST <br />
+          BACKEND
+        </h1>
+      </div>
+    </header>
 
-      <label for="username">Username:</label>
-      <input
-        class="input"
-        type="text"
-        name="username"
-        value="<%= inputValues?.username || '' %>"
-        required
-      />
-      <% if(errors.username) { %>
-      <p><%= errors.username %></p>
-      <% } %>
+    <main class="content posts-main">
+      <form class="form" action="<%= action %>" method="POST">
+        <% if(action === "/users/signUp") { %>
+        <label for="email">Email:</label>
+        <input
+          class="input"
+          type="text"
+          name="email"
+          value="<%= inputValues?.email || '' %>"
+          required
+        />
+        <% } %> <% if(errors.email) { %>
+        <p><%= errors.email %></p>
+        <% } %>
 
-      <label for="password">Password:</label>
-      <input class="input" type="password" name="password" required />
+        <label for="username">Username:</label>
+        <input
+          class="input"
+          type="text"
+          name="username"
+          value="<%= inputValues?.username || '' %>"
+          required
+        />
+        <% if(errors.username) { %>
+        <p><%= errors.username %></p>
+        <% } %>
 
-      <% if(action === "/users/signUp") { %>
-      <label for="confirm-password">Confirm Password:</label>
-      <input class="input" type="password" name="confirm-password" required />
-      <% if(errors.password) { %>
-      <p><%= errors.password %></p>
-      <% }} %>
+        <label for="password">Password:</label>
+        <input class="input" type="password" name="password" required />
 
-      <button class="submit" type="submit"><%= btnText %></button>
-    </form>
+        <% if(action === "/users/signUp") { %>
+        <label for="confirm-password">Confirm Password:</label>
+        <input class="input" type="password" name="confirm-password" required />
+        <% if(errors.password) { %>
+        <p><%= errors.password %></p>
+        <% }} %>
+
+        <button class="btn btn-auth" type="submit"><%= btnText %></button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-text">
+        Copyright © <%= new Date().getFullYear() %> Niklas Nordin
+      </p>
+    </footer>
   </body>
 </html>

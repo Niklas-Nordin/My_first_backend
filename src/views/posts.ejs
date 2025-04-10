@@ -5,33 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First Backend</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Damion&family=Monsieur+La+Doulaise&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <main>
-      <ul>
+    <header class="header">
+      <div class="circle">
+        <h1 class="homepage-title">
+          MY FIRST <br />
+          BACKEND
+        </h1>
+      </div>
+    </header>
+
+    <main class="content posts-main">
+      <ul class="ul">
         <% { posts.forEach(post => { %>
         <li class="li-item">
-          <h2 class="title"><%= post.title %></h2>
-          <p class="content"><%= post.content %></p>
-          <p class="time"><%= post.postTime %></p>
-          <div>
-            <form action="/posts/update/<%= post.id %>" method="GET">
-              <button type="submit">Update</button>
-            </form>
-            <form
-              action="/posts/delete/<%= post.id %>?_method=DELETE"
-              method="POST"
-            >
-              <button type="submit">Delete</button>
-            </form>
+          <div class="title-description">
+            <h2 class="title-post"><%= post.title %></h2>
+            <p class="description"><%= post.content %></p>
+          </div>
+
+          <div class="update-delete-time">
+            <div class="update-delete">
+              <form action="/posts/update/<%= post.id %>" method="GET">
+                <button class="btns update" type="submit">Update</button>
+              </form>
+              <form
+                action="/posts/delete/<%= post.id %>?_method=DELETE"
+                method="POST"
+              >
+                <button class="btns delete" type="submit">Delete</button>
+              </form>
+            </div>
+            <p class="time"><%= post.postTime %></p>
           </div>
         </li>
         <% });} %>
       </ul>
 
-      <button onclick="window.location.href='/posts/create'">
+      <button class="btn" onclick="window.location.href='/posts/create'">
         Create New Post
       </button>
     </main>
+
+    <footer class="footer">
+      <p class="footer-text">
+        Copyright © <%= new Date().getFullYear() %> Niklas Nordin
+      </p>
+    </footer>
   </body>
 </html>

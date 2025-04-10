@@ -4,27 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First Backend</title>
-    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Damion&family=Monsieur+La+Doulaise&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <form action="<%= action %>" method="POST">
-      <label for="title">Title:</label>
-      <input
-        type="text"
-        value="<%= inputValues?.title %>"
-        name="title"
-        required
-      />
+    <header class="header">
+      <div class="circle">
+        <h1 class="homepage-title">
+          MY FIRST <br />
+          BACKEND
+        </h1>
+      </div>
+    </header>
 
-      <label for="content">Description</label>
-      <input
-        type="text"
-        value="<%= inputValues?.content %>"
-        name="content"
-        required
-      />
+    <main class="content">
+      <form class="form" action="<%= action %>" method="POST">
+        <label for="title">Title:</label>
+        <input
+          class="input"
+          type="text"
+          value="<%= inputValues?.title %>"
+          name="title"
+          required
+        />
 
-      <button type="submit"><%= btnText %></button>
-    </form>
+        <label for="content">Description</label>
+        <textarea class="textarea" type="text" name="content" required>
+<%= inputValues?.content.trim() %></textarea
+        >
+
+        <button class="btn save-btn" type="submit"><%= btnText %></button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-text">
+        Copyright © <%= new Date().getFullYear() %> Niklas Nordin
+      </p>
+    </footer>
   </body>
 </html>
